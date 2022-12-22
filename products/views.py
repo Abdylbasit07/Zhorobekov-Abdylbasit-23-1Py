@@ -9,9 +9,9 @@ def main_view(request):
 def products_view(request):
     if request.method == 'GET':
         category_id = int(request.GET.get('category_id'))
-
         if category_id:
             products = Product.objects.filter(categories__in=[category_id])
+
         else:
             products = Product.objects.all()
 
