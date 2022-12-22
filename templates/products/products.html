@@ -1,0 +1,41 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+    <style type="text/css">
+        .products {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 10%;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+        .card {
+            width: 100%;
+            color: #004A43;
+            background-color: #D9EBE9;
+            margin-bottom: 25px;
+        }
+        .card-body > img {
+            border: 1px solid #004A43;
+            width: 100%;
+        }
+    </style>
+    <div class="products">
+        {% for product in products %}
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    {% if product.image %}
+                        <img src="/media/{{ product.image }}" alt="">
+                    {% else %}
+                        <img src="/media/placeholder.webp" alt="">
+                    {% endif %}
+                    <h4 class="card-title">{{ product.title }}</h4>
+                    <h6 class="dates">{{ product.created_date }}</h6>
+                    <a href="/products/{{ product.id }}/" class="card-more">More</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}
