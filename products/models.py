@@ -12,6 +12,7 @@ class Product(models.Model):
     created_date = models.DateField(auto_now=True)
     update_date = models.DateField(auto_now_add=True)
     categories = models.ManyToManyField(Category)
+    commentable = models.BooleanField(default=True)
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name="review")

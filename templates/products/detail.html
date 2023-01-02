@@ -49,6 +49,12 @@
             <h6>{{ product.update_date }}</h6>
         </div>
         <h5>Comments:   </h5>
+        {% if product.commentable %}
+        <form action="/products/{{ product.id }}/" method="post">
+            {% csrf_token %}
+            {{ review_form }}
+            <input type="submit" class="btn">
+        </form>
         <div class="review">
             {% for review in review %}
                 <div class="review-block">
@@ -57,5 +63,6 @@
                 </div>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 {% endblock %}
