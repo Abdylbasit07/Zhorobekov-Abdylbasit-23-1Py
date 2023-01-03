@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -6,6 +7,7 @@ class Category(models.Model):
     title = models.CharField(max_length=70)
 
 class Product(models.Model):
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE, null=True)
     image = models.ImageField(blank=True, null=True)
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -15,6 +17,5 @@ class Product(models.Model):
     commentable = models.BooleanField(default=True)
 
 class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name="review")
-    comments = models.CharField(max_length=255)
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE, null=True)
     created_date = models.DateField(auto_now=True)
