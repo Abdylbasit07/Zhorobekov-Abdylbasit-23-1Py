@@ -21,6 +21,12 @@
             width: 100%;    
         }
     </style>
+    <div class="search">
+        <form action="/products/" method="get">
+            <input type="text" name="search">
+            <input type="submit" value="search">
+        </form>
+    </div>
     <div class="products">
         {% for product in products %}
             <div class="card" style="width: 18rem;">
@@ -35,6 +41,11 @@
                     <a href="/products/{{ product.id }}/" class="card-more">More</a>
                 </div>
             </div>
+        {% endfor %}
+    </div>
+    <div class="pages">
+        {% for page in max_page %}
+            <a href="/products/?page={{ page }}"><button>{{ page }}</button></a>
         {% endfor %}
     </div>
     

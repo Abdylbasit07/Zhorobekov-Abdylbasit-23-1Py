@@ -11,8 +11,8 @@ class Product(models.Model):
     image = models.ImageField(blank=True, null=True)
     title = models.CharField(max_length=100)
     description = models.TextField()
-    created_date = models.DateField(auto_now=True)
-    update_date = models.DateField(auto_now_add=True)
+    created_date = models.DateField(auto_now_add=True)
+    update_date = models.DateField(auto_now=True)
     categories = models.ManyToManyField(Category)
     commentable = models.BooleanField(default=True)
 
